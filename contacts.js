@@ -17,9 +17,7 @@ function getContactById(contactId) {
   fs.readFile(file)
     .then((data) => {
       const contacts = JSON.parse(data.toString());
-      const foundContact = contacts.filter(
-        ({ id }) => Number(id) === contactId
-      );
+      const foundContact = contacts.filter(({ id }) => id === contactId);
       console.log(foundContact);
     })
     .catch((err) => console.log(err.message));
@@ -29,9 +27,7 @@ function removeContact(contactId) {
   fs.readFile(file)
     .then((data) => {
       const contacts = JSON.parse(data.toString());
-      const updatedContacts = contacts.filter(
-        ({ id }) => Number(id) !== contactId
-      );
+      const updatedContacts = contacts.filter(({ id }) => id !== contactId);
       fs.writeFile(file, JSON.stringify(updatedContacts), (err) => {
         if (err) {
           console.error(err);
@@ -44,7 +40,7 @@ function removeContact(contactId) {
 
 function addContact(name, email, phone) {
   const newContact = {
-    id: new Date().toLocaleDateString(),
+    id: Date.now().toString(),
     name,
     email,
     phone,
