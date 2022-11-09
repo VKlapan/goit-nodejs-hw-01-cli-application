@@ -2,11 +2,6 @@ const fs = require("fs").promises;
 const { Module } = require("module");
 var path = require("path");
 
-/*
- * Раскомментируй и запиши значение
- * const contactsPath = ;
- */
-
 const contactsPath = "./db/";
 const fileName = "contacts.json";
 
